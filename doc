@@ -1,0 +1,95 @@
+一、安装Anaconda
+1、安装
+
+
+
+
+
+
+
+
+
+
+
+
+2、配置环境变量
+
+
+
+3、测试
+
+二、修改镜像源
+1、查看镜像源
+conda config --show 
+2、添加镜像源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes 
+三、Anaconda常用命令
+1、查看conda版本
+conda --version
+2、查看包括版本的更多信息
+conda info
+3、更新conda至最新版本
+conda update conda
+4、创建出来的虚拟环境所在的位置为conda路径下的env/文件下,,默认创建和当前python版本一致的环境.
+conda create --name 环境名称
+如：创建新环境时指定python版本为3.8，环境名称为python38
+	conda create --name python38 python=3.8
+5、切换到环境名为python38的环境（默认是base环境），切换后可通过python -V查看是否切换成功
+activate python38 
+6、返回前一个python环境
+deactivate
+7、显示已创建的环境，会列出所有的环境名和对应路径
+conda info -e
+8、删除虚拟环境
+conda remove --name “envname” --all
+9、查看当前环境安装的包
+conda list   ##获取当前环境中已安装的包
+conda list -n python36   ##获取指定环境中已安装的包
+10、安装更新删除包
+##在当前环境中安装包
+conda install scrapy  
+##在指定环境中安装包
+conda install -n python36 scrapy
+##在当前环境中更新包  
+conda update scrapy   
+##在指定环境中更新包
+conda update -n python36 scrapy  
+##更新当前环境所有包
+conda update --all   
+##在当前环境中删除包
+conda remove scrapy   
+##在指定环境中删除包
+conda remove -n python36 scrapy
+四、Anaconda安装TensorFlow
+1、创建tensorflow环境，指定python版本为3.6
+conda create --name tensorflow python=3.6
+2、升级pip
+python -m pip install --upgrade pip
+3、安装tensorflow
+pip install --upgrade --ignore-installed tensorflow
+4、测试tensorflow是否安装成功
+import tensorflow as tf
+tf.__version__
+a = [1, 10, 26.9, 2.8, 166.32, 62.3]
+b = tf.argsort(a,axis=-1,direction='ASCENDING',stable=False,name=None)
+c = tf.keras.backend.eval(b)
+print(c)
+#[0 3 1 2 5 4]
+五、在Anaconda中安装OpenCV
+1、下载OpenCV安装包
+国外镜像：https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv
+国内镜像：https://pypi.tuna.tsinghua.edu.cn/simple/opencv-contrib-python/
+2、激活需要安装OpenCV的环境
+activate tensorflow
+3、转到OpenCV安装包所在的路径，进行安装
+pip install opencv_contrib_python-4.4.0.46-cp36-cp36m-win_amd64.whl
+4、验证是否安装成功
+#进入python环境
+python
+#导入OpenCV
+import cv2
+cv2.__version__
+
+
